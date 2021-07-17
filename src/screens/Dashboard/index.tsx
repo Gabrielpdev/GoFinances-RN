@@ -17,15 +17,16 @@ import {
   Title,
   TransactionList,
   Transactions,
+  LogoutButton
  } from './styles';
 
- export interface dataListProps extends TransactionCardProps{
+ export interface DataListProps extends TransactionCardProps{
    id: string;
  }
 
 
 export function Dashboard(){
-  const data : Array<dataListProps> = [
+  const data : Array<DataListProps> = [
     {
       id: '1',
       type: 'positive',
@@ -74,7 +75,9 @@ export function Dashboard(){
             </User>
           </UserInfo>
 
-          <Icon name="power" />
+          <LogoutButton onPress={() => {}} >
+            <Icon name="power" />
+          </LogoutButton>
         </UserWrapper>
       </Header>
     
