@@ -18,7 +18,7 @@ import {
 interface Category {
   key: string;
   name: string;
-  icon: string;
+  icon: string | null;
 }
 
 interface Props {
