@@ -4,7 +4,7 @@ import { Feather } from '@expo/vector-icons';
 import { FlatList } from 'react-native';
 
 import { DataListProps } from './index';
-import { getStatusBarHeight } from 'react-native-iphone-x-helper';
+import { getStatusBarHeight, ifIphoneX } from 'react-native-iphone-x-helper';
 import { BorderlessButton } from "react-native-gesture-handler";
 
 export const Container = styled.View`
@@ -26,8 +26,8 @@ export const Header = styled.View`
 export const UserWrapper = styled.View`
   width: 100%;
 
-  padding:  0 ${RFValue(24)}px;
-  margin-top: ${getStatusBarHeight() + RFValue(28)}px;
+  padding: 0 ${RFValue(24)}px;
+  margin-top: ${ifIphoneX ? getStatusBarHeight() + RFValue(28) : RFValue(28)}px;
 
   flex-direction: row;
   justify-content: space-between;

@@ -4,6 +4,7 @@ import 'intl/locale-data/jsonp/pt-BR';
 
 import React from 'react';
 import { NavigationContainer } from '@react-navigation/native';
+import { StatusBar } from 'react-native';
 
 import AppLoading from 'expo-app-loading';
 import { ThemeProvider } from 'styled-components';
@@ -33,6 +34,7 @@ export default function App() {
   return (
     <NavigationContainer>
       <ThemeProvider theme={theme} >
+      <StatusBar barStyle="light-content"/>
         <AppRoutes />
       </ThemeProvider>
     </NavigationContainer>
