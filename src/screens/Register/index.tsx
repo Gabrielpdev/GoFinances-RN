@@ -10,7 +10,6 @@ import uuid from 'react-native-uuid';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as Yup from 'yup';
 import AsyncStorage from '@react-native-async-storage/async-storage'
-import { useNavigation } from '@react-navigation/native';
 
 import { Button } from '../../components/Forms/Button';
 import { CategorySelectButton } from '../../components/Forms/CategorySelectButton';
@@ -44,7 +43,7 @@ import {
   .required('O valor é obrigatório')
  })
 
-export function Register(){
+export function Register({ navigation }){
   const {
     control,
     handleSubmit,
@@ -53,8 +52,6 @@ export function Register(){
   } = useForm({
     resolver: yupResolver(schema)
   });
-
-  const navigation = useNavigation();
 
   const [ transactionType, setTransactionType ] = useState('');
   const [ categoryModalOpen, setCategoryModalOpen ] = useState(false);
