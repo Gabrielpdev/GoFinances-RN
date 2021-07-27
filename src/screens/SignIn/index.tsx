@@ -15,11 +15,14 @@ import {
   FooterWrapper,
 } from './styles';
 import { SignInSocialButton } from '../../components/SignInSocialButton';
+import { useAuth } from '../../hooks/auth';
 
 interface SignInProps {
 }
 
 export function SignIn() {
+  const { user } = useAuth();
+
   return (
     <Container>
       <Header>
