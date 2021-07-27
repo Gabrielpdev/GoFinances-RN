@@ -12,7 +12,9 @@ import {
   Title,
   SignInTitle,
   Footer,
+  FooterWrapper,
 } from './styles';
+import { SignInSocialButton } from '../../components/SignInSocialButton';
 
 interface SignInProps {
 }
@@ -41,7 +43,10 @@ export function SignIn() {
       </Header>
 
       <Footer>
-
+        <FooterWrapper>
+          <SignInSocialButton title="Entrar com Google" svg={GoogleSvg} />
+          <SignInSocialButton title="Entrar com Apple" svg={AppleSvg} />
+        </FooterWrapper>
       </Footer>
     </Container>
   );
