@@ -3,11 +3,12 @@ import 'intl';
 import 'intl/locale-data/jsonp/pt-BR';
 
 import React from 'react';
-import { NavigationContainer } from '@react-navigation/native';
 import { StatusBar } from 'react-native';
 
 import AppLoading from 'expo-app-loading';
 import { ThemeProvider } from 'styled-components';
+
+import { Routes } from './src/routes';
 
 import {
   useFonts,
@@ -18,31 +19,27 @@ import {
 
 import theme from './src/global/styles/theme';
 
-import { AppRoutes } from './src/routes/app.routes';
-import { SignIn } from './src/screens/SignIn';
-
-import { AuthProvider } from './src/hooks/auth';
+import { AuthProvider, useAuth } from './src/hooks/auth';
 
 export default function App() {
+  const { userStorageLoading } = useAuth();
+
   const [fontsLoaded] = useFonts({
     Poppins_400Regular,
     Poppins_500Medium,
     Poppins_700Bold
   });
 
-  if(!fontsLoaded){
+  if(!fontsLoaded || userStorageLoading){
     return <AppLoading/>
   }
 
   return (
-    <NavigationContainer>
-      <ThemeProvider theme={theme} >
+    <ThemeProvider theme={theme} >
       <StatusBar barStyle="light-content"/>
-        <AuthProvider>
-          {/* <AppRoutes /> */}
-          <SignIn />
-        </AuthProvider>
-      </ThemeProvider>
-    </NavigationContainer>
+      <AuthProvider>
+        <Routes/>
+      </AuthProvider>
+    </ThemeProvider>
   );
 }

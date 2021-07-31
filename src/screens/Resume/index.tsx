@@ -26,6 +26,7 @@ import {
   Month,
   LoadContainer,
  } from './styles';
+import { useAuth } from '../../hooks/auth';
 
 interface CategoryData {
   key: string;
@@ -38,6 +39,7 @@ interface CategoryData {
 
 export function Resume() {
   const theme = useTheme();
+  const { user } = useAuth();
 
   const [ isLoading, setIsLoading ] = useState(false);
   const [ selectedDate, setSelectedDate ] = useState(new Date());
@@ -51,7 +53,7 @@ export function Resume() {
 
   async function loadData(){
     setIsLoading(true);
-    const dataKey = "@goFinances:transactions";
+    const dataKey = `@goFinances:transactions_user:${user.id}`;
 
     const response = await AsyncStorage.getItem(dataKey);
     const responseFormatted = response ? JSON.parse(response) : [];
